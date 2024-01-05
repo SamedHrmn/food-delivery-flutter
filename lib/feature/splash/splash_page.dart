@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter/feature/splash/splash_page_mixin.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_button.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_text.dart';
+import 'package:food_delivery_flutter/project/widget/splash_indicator.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -12,14 +14,46 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> with SplashPageMixin {
   @override
   Widget build(BuildContext context) {
-    return PageView.builder(
-      controller: pageController,
-      itemCount: splashContents.length,
-      itemBuilder: (context, index) => SplashContent(
-        imPath: splashContents[index].imPath,
-        header: splashContents[index].header,
-        text: splashContents[index].text,
-      ),
+    return Column(
+      children: [
+        Expanded(
+          child: PageView.builder(
+            controller: pageController,
+            onPageChanged: updatePageViewIndex,
+            itemCount: splashContents.length,
+            itemBuilder: (context, index) => SplashContent(
+              imPath: splashContents[index].imPath,
+              header: splashContents[index].header,
+              text: splashContents[index].text,
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 120, top: 48),
+          child: AnimatedSize(
+            duration: const Duration(milliseconds: 100),
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 400),
+              switchOutCurve: Curves.easeOut,
+              switchInCurve: Curves.easeIn,
+              child: pageViewIndex != splashContents.length - 1
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        for (int i = 0; i < splashContents.length; i++) ...{
+                          SplashIndicator(currentPageIndex: pageViewIndex, itemIndex: i),
+                        }
+                      ],
+                    )
+                  : FoodDeliveryButton(
+                      text: 'Get Started',
+                      onPressed: () {},
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                    ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -55,7 +89,6 @@ class SplashContent extends StatelessWidget {
             size: 13,
             fontWeight: FontWeight.w400,
           ),
-          const SizedBox(height: 168),
         ],
       ),
     );

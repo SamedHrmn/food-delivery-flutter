@@ -4,6 +4,14 @@ import 'package:gen/gen.dart';
 
 mixin SplashPageMixin on State<SplashPage> {
   final pageController = PageController();
+  int pageViewIndex = 0;
+
+  void updatePageViewIndex(int i) {
+    setState(() {
+      pageViewIndex = i;
+    });
+  }
+
   final splashContents = [
     SplashContent(
       imPath: Assets.images.onboarding1.path,
