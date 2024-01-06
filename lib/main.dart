@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter/feature/splash/splash_page.dart';
+import 'package:food_delivery_flutter/project/navigation/app_navigation.dart';
 import 'package:food_delivery_flutter/project/util/splash_helper.dart';
 
 void main() {
@@ -28,12 +29,10 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp.router(
       title: 'Material App',
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: SplashPage(),
-      ),
+      routerConfig: AppNavigation.router,
     );
   }
 }

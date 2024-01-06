@@ -35,3 +35,13 @@ class BaseText extends StatelessWidget {
     );
   }
 }
+
+extension BaseTextStyle on BaseText {
+  TextStyle get style => TextStyle(
+        color: color,
+        fontSize: size,
+        fontFamily: fontFamily,
+        fontWeight: fontWeight,
+        overflow: textOverflow,
+      );
+}
