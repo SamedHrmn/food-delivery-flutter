@@ -9,12 +9,14 @@ class TextFoodDelivery extends StatelessWidget {
     required this.size,
     this.fontWeight = FontWeight.w600,
     this.textAlign = TextAlign.center,
+    this.color,
   });
 
   final String text;
   final double size;
   final FontWeight fontWeight;
   final TextAlign textAlign;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class TextFoodDelivery extends StatelessWidget {
       text: text,
       size: size,
       fontFamily: FontFamily.poppins,
-      color: FoodDeliveryColors.black1,
+      color: color ?? FoodDeliveryColors.black1,
       fontWeight: fontWeight,
       align: textAlign,
     );

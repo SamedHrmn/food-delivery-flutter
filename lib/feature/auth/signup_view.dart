@@ -42,7 +42,9 @@ class SignupView extends StatelessWidget {
               SizedBox(height: SizeHelper.toHeight(28)),
               FoodDeliveryButton(
                 text: 'Sign up',
-                onPressed: () {},
+                onPressed: () {
+                  context.go(AppNavigation.homePagePath);
+                },
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: SizeHelper.toHeight(32)),

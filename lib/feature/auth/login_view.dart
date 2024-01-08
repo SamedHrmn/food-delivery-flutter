@@ -47,7 +47,9 @@ class LoginView extends StatelessWidget {
               ),
               FoodDeliveryButton(
                 text: 'Login',
-                onPressed: () {},
+                onPressed: () {
+                  context.go(AppNavigation.homePagePath);
+                },
               ),
               const Spacer(),
               InkWell(

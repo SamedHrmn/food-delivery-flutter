@@ -4,10 +4,12 @@ import 'package:food_delivery_flutter/project/util/size_helper.dart';
 import 'package:gen/gen.dart';
 
 class FoodDeliveryTextField extends StatelessWidget {
-  const FoodDeliveryTextField({super.key, required this.hintText, this.keyboardType});
+  const FoodDeliveryTextField({super.key, required this.hintText, this.keyboardType, this.hintColor, this.prefixIcon});
 
   final String hintText;
   final TextInputType? keyboardType;
+  final Color? hintColor;
+  final Widget? prefixIcon;
 
   InputBorder border() => OutlineInputBorder(
         borderSide: const BorderSide(color: Colors.black),
@@ -22,10 +24,11 @@ class FoodDeliveryTextField extends StatelessWidget {
         keyboardType: keyboardType,
         decoration: InputDecoration(
           hintText: hintText,
+          prefixIcon: prefixIcon,
           constraints: const BoxConstraints(),
           prefixIconConstraints: const BoxConstraints(),
           suffixIconConstraints: const BoxConstraints(),
-          hintStyle: const BaseText(text: '', size: 15, color: FoodDeliveryColors.gray1, fontWeight: FontWeight.w400).style,
+          hintStyle: BaseText(text: '', size: 15, color: hintColor ?? FoodDeliveryColors.gray1, fontWeight: FontWeight.w400).style,
           contentPadding: EdgeInsets.symmetric(horizontal: 32, vertical: SizeHelper.toHeight(16)),
           border: border(),
           focusedBorder: border(),

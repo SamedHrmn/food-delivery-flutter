@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_flutter/feature/splash/splash_page.dart';
+import 'package:food_delivery_flutter/feature/home/home_view_viewmodel.dart';
 import 'package:food_delivery_flutter/project/navigation/app_navigation.dart';
 import 'package:food_delivery_flutter/project/util/splash_helper.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   final binding = WidgetsFlutterBinding.ensureInitialized();
@@ -29,10 +30,17 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Material App',
-      debugShowCheckedModeBanner: false,
-      routerConfig: AppNavigation.router,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => HomeViewViewModel(),
+        ),
+      ],
+      child: MaterialApp.router(
+        title: 'Material App',
+        debugShowCheckedModeBanner: false,
+        routerConfig: AppNavigation.router,
+      ),
     );
   }
 }
