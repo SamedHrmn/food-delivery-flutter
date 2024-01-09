@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_flutter/feature/home/home_view_viewmodel.dart';
+import 'package:food_delivery_flutter/feature/home/widget/featured_item.dart';
 import 'package:food_delivery_flutter/project/util/size_helper.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_icon_button.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_text.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
-class FeaturedDetailView extends StatefulWidget {
-  const FeaturedDetailView({super.key});
+class FeaturedView extends StatefulWidget {
+  const FeaturedView({super.key});
 
   @override
-  State<FeaturedDetailView> createState() => _FeaturedDetailViewState();
+  State<FeaturedView> createState() => _FeaturedViewState();
 }
 
-class _FeaturedDetailViewState extends State<FeaturedDetailView> {
+class _FeaturedViewState extends State<FeaturedView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +41,22 @@ class _FeaturedDetailViewState extends State<FeaturedDetailView> {
                     ),
                   ],
                 ),
+              ),
+            ),
+            Expanded(
+              child: Consumer<HomeViewViewModel>(
+                builder: (context, homeViewModel, _) => ListView.separated(
+                    padding: SizeHelper.padding(l: 20, r: 20, t: 36),
+                    itemBuilder: (context, index) => SizedBox(
+                          height: SizeHelper.toHeight(260),
+                          child: FeaturedItem(
+                            featuredModel: homeViewModel.featuredItems[index],
+                          ),
+                        ),
+                    separatorBuilder: (context, index) => SizedBox(
+                          height: SizeHelper.toHeight(36),
+                        ),
+                    itemCount: homeViewModel.featuredItems.length),
               ),
             ),
           ],

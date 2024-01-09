@@ -1,8 +1,11 @@
 import 'package:food_delivery_flutter/feature/auth/auth_view.dart';
 import 'package:food_delivery_flutter/feature/auth/login_view.dart';
 import 'package:food_delivery_flutter/feature/auth/signup_view.dart';
-import 'package:food_delivery_flutter/feature/home/featured/featured_detail_view.dart';
+import 'package:food_delivery_flutter/feature/detail/food_detail_view.dart';
+import 'package:food_delivery_flutter/feature/home/domain/food_model.dart';
+import 'package:food_delivery_flutter/feature/home/featured/featured_view.dart';
 import 'package:food_delivery_flutter/feature/home/home_view.dart';
+import 'package:food_delivery_flutter/feature/home/hotspots/hotspot_view.dart';
 import 'package:food_delivery_flutter/feature/splash/splash_page.dart';
 import 'package:go_router/go_router.dart';
 
@@ -14,7 +17,9 @@ final class AppNavigation {
   static const authViewPath = '/auth';
   static const loginViewPath = '/auth/login';
   static const signupViewPath = '/auth/signup';
-  static const featuredDetailViewPath = '/home/featuredDetail';
+  static const featuredViewPath = '/home/featured';
+  static const hotspotViewPath = '/home/hotspot';
+  static const foodDetailViewPath = '/detail';
 
   static final router = GoRouter(
     routes: [
@@ -49,9 +54,21 @@ final class AppNavigation {
         },
       ),
       GoRoute(
-        path: featuredDetailViewPath,
+        path: featuredViewPath,
         builder: (context, state) {
-          return const FeaturedDetailView();
+          return const FeaturedView();
+        },
+      ),
+      GoRoute(
+        path: hotspotViewPath,
+        builder: (context, state) {
+          return const HotspotView();
+        },
+      ),
+      GoRoute(
+        path: foodDetailViewPath,
+        builder: (context, state) {
+          return FoodDetailView(foodModel: state.extra as FoodModel);
         },
       )
     ],

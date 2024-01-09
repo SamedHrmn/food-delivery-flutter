@@ -4,14 +4,14 @@ import 'package:food_delivery_flutter/feature/home/favourite/favourite_page.dart
 import 'package:food_delivery_flutter/feature/home/home_page.dart';
 import 'package:food_delivery_flutter/feature/home/home_view.dart';
 import 'package:food_delivery_flutter/feature/home/home_view_viewmodel.dart';
-import 'package:food_delivery_flutter/feature/home/hotspots/hotspot_page.dart';
+import 'package:food_delivery_flutter/feature/home/hotspots/hotspot_view.dart';
 import 'package:food_delivery_flutter/feature/home/profile/profile_page.dart';
 import 'package:provider/provider.dart';
 
 mixin HomeViewMixin on State<HomeView> {
   final navbarPages = const [
     HomePage(),
-    HotspotPage(),
+    HotspotView(),
     CartPage(),
     FavouritePage(),
     ProfilePage(),

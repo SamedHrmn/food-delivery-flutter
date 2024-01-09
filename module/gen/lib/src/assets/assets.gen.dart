@@ -70,6 +70,14 @@ class $AssetsImagesGen {
   AssetGenImage get icBurger =>
       const AssetGenImage('assets/images/ic_burger.png');
 
+  /// File path: assets/images/ic_calorie.png
+  AssetGenImage get icCalorie =>
+      const AssetGenImage('assets/images/ic_calorie.png');
+
+  /// File path: assets/images/ic_duration.png
+  AssetGenImage get icDuration =>
+      const AssetGenImage('assets/images/ic_duration.png');
+
   /// File path: assets/images/ic_fav.png
   AssetGenImage get icFav => const AssetGenImage('assets/images/ic_fav.png');
 
@@ -90,6 +98,10 @@ class $AssetsImagesGen {
   AssetGenImage get icPizza =>
       const AssetGenImage('assets/images/ic_pizza.png');
 
+  /// File path: assets/images/ic_rating.png
+  AssetGenImage get icRating =>
+      const AssetGenImage('assets/images/ic_rating.png');
+
   /// File path: assets/images/ic_search.png
   AssetGenImage get icSearch =>
       const AssetGenImage('assets/images/ic_search.png');
@@ -105,6 +117,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/im_delicious_tacos_arrangement.png
   AssetGenImage get imDeliciousTacosArrangement =>
       const AssetGenImage('assets/images/im_delicious_tacos_arrangement.png');
+
+  /// File path: assets/images/im_food_detail_bg.png
+  AssetGenImage get imFoodDetailBg =>
+      const AssetGenImage('assets/images/im_food_detail_bg.png');
 
   /// File path: assets/images/im_hotspot1.png
   AssetGenImage get imHotspot1 =>
@@ -175,16 +191,20 @@ class $AssetsImagesGen {
         icAccount,
         icBag,
         icBurger,
+        icCalorie,
+        icDuration,
         icFav,
         icFav2,
         icHome,
         icIceCream,
         icMeat,
         icPizza,
+        icRating,
         icSearch,
         imBurgerMealWithFrenchFries,
         imDeliciousPizzaIndoors,
         imDeliciousTacosArrangement,
+        imFoodDetailBg,
         imHotspot1,
         imHotspot2,
         imHotspot3,
