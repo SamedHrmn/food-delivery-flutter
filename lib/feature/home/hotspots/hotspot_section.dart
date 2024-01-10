@@ -1,7 +1,7 @@
 part of '../home_page.dart';
 
 class _HotspotSection extends StatelessWidget {
-  const _HotspotSection({super.key});
+  const _HotspotSection();
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +36,11 @@ class _HotspotSection extends StatelessWidget {
               padding: SizeHelper.padding(l: 20, r: 20, t: 16, b: 16),
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => HotspotItem(
-                onTap: () => context.push(AppNavigation.foodDetailViewPath, extra: homeViewModel.hotspotItems[index]),
-                hotspotModel: homeViewModel.hotspotItems[index],
+                onTap: () => context.push(AppNavigation.foodDetailViewPath, extra: homeViewModel.hotSpots[index]),
+                hotspotModel: homeViewModel.hotSpots[index],
               ),
               separatorBuilder: (context, index) => SizedBox(width: SizeHelper.toWidth(40)),
-              itemCount: homeViewModel.hotspotItems.length,
+              itemCount: homeViewModel.hotSpots.length,
             ),
           ),
         ),

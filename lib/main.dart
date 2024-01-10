@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter/feature/detail/food_detail_viewmodel.dart';
+import 'package:food_delivery_flutter/feature/home/cart/cart_viewmodel.dart';
+import 'package:food_delivery_flutter/feature/home/favourite/favourite_viewmodel.dart';
 import 'package:food_delivery_flutter/feature/home/home_view_viewmodel.dart';
 import 'package:food_delivery_flutter/project/navigation/app_navigation.dart';
 import 'package:food_delivery_flutter/project/util/splash_helper.dart';
@@ -38,6 +40,12 @@ class _MyAppState extends State<MyApp> {
         ),
         ChangeNotifierProvider(
           create: (context) => FoodDetailViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CartViewModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => FavouriteViewModel(homeViewViewModel: context.read<HomeViewViewModel>()),
         ),
       ],
       child: MaterialApp.router(

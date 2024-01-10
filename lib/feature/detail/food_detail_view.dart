@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter/feature/detail/detail_extras_item.dart';
 import 'package:food_delivery_flutter/feature/detail/food_detail_viewmodel.dart';
 import 'package:food_delivery_flutter/feature/home/domain/food_model.dart';
+import 'package:food_delivery_flutter/feature/home/favourite/favourite_viewmodel.dart';
+import 'package:food_delivery_flutter/feature/home/home_view_viewmodel.dart';
+import 'package:food_delivery_flutter/project/navigation/app_navigation.dart';
 import 'package:food_delivery_flutter/project/util/size_helper.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_button.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_icon_button.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_text.dart';
 import 'package:gen/gen.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class FoodDetailView extends StatefulWidget {
@@ -33,6 +39,9 @@ class _FoodDetailViewState extends State<FoodDetailView> {
         child: SingleChildScrollView(
           child: Stack(
             children: [
+              SizedBox(
+                height: MediaQuery.sizeOf(context).height - MediaQuery.viewPaddingOf(context).top,
+              ),
               ColoredBox(
                 color: const Color(0xfffbdb3f),
                 child: Image.asset(
@@ -116,6 +125,56 @@ class _FoodDetailViewState extends State<FoodDetailView> {
                       ),
                     ),
                   ],
+                ),
+              ),
+              Positioned(
+                top: SizeHelper.toHeight(16),
+                left: SizeHelper.toWidth(20),
+                right: SizeHelper.toWidth(20),
+                child: SizedBox(
+                  height: SizeHelper.toHeight(40),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      FoodDeliveryIconButton(
+                        onTap: () => context.pop(),
+                        iconData: Icons.arrow_back_outlined,
+                        size: 24,
+                      ),
+                      Consumer<HomeViewViewModel>(builder: (context, homeViewModel, _) {
+                        final model = homeViewModel.getFoodModelInHotspots(widget.foodModel);
+
+                        if (model == null) {
+                          Future.microtask(
+                            () => ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: TextFoodDelivery(
+                                  text: 'An error occured',
+                                  size: 15,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          );
+                        }
+
+                        return FoodDeliveryIconButton(
+                          onTap: () => context.read<FavouriteViewModel>().updateFoodFavorite(model),
+                          iconData: homeViewModel.getFoodModelInHotspots(widget.foodModel)?.isFavourite == true ? Icons.favorite : Icons.favorite_outline,
+                          size: 24,
+                        );
+                      }),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: SizeHelper.toWidth(20),
+                right: SizeHelper.toWidth(20),
+                bottom: SizeHelper.toHeight(16),
+                child: FoodDeliveryButton(
+                  text: 'Add 1 to Cart',
+                  onPressed: () => context.push(AppNavigation.cartViewPath, extra: widget.foodModel),
                 ),
               ),
             ],

@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 class FoodModel {
   final String? name;
   final String? specialText;
@@ -22,4 +23,30 @@ class FoodModel {
     this.extras = const [],
     this.isFavourite = false,
   });
+
+  FoodModel copyWith({
+    String? name,
+    String? specialText,
+    double? deliveryFee,
+    double? cal,
+    double? price,
+    double? rating,
+    String? duration,
+    String? imagePath,
+    bool? isFavourite,
+    List<String>? extras,
+  }) {
+    return FoodModel(
+      name: name ?? this.name,
+      specialText: specialText ?? this.specialText,
+      deliveryFee: deliveryFee ?? this.deliveryFee,
+      cal: cal ?? this.cal,
+      price: price ?? this.price,
+      rating: rating ?? this.rating,
+      duration: duration ?? this.duration,
+      imagePath: imagePath ?? this.imagePath,
+      isFavourite: isFavourite ?? this.isFavourite,
+      extras: extras ?? this.extras,
+    );
+  }
 }

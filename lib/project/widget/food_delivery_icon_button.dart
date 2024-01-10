@@ -62,7 +62,8 @@ class FoodDeliveryIconButton extends StatelessWidget {
             : Image.asset(
                 iconPath ?? '',
                 package: 'gen',
-                width: SizeHelper.toWidth(size ?? 20),
+                color: Colors.black,
+                width: SizeHelper.toHeight(size ?? 20),
               ),
       ),
     );

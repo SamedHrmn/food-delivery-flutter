@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_flutter/feature/home/cart/cart_page.dart';
 import 'package:food_delivery_flutter/feature/home/favourite/favourite_page.dart';
 import 'package:food_delivery_flutter/feature/home/home_page.dart';
 import 'package:food_delivery_flutter/feature/home/home_view.dart';
@@ -12,7 +11,7 @@ mixin HomeViewMixin on State<HomeView> {
   final navbarPages = const [
     HomePage(),
     HotspotView(),
-    CartPage(),
+    SizedBox(),
     FavouritePage(),
     ProfilePage(),
   ];

@@ -48,7 +48,7 @@ class HotspotView extends StatelessWidget {
               child: Consumer<HomeViewViewModel>(
                 builder: (context, homeViewModel, _) => GridView.builder(
                   padding: SizeHelper.padding(l: 16, r: 16),
-                  itemCount: homeViewModel.hotspotItems.length,
+                  itemCount: homeViewModel.hotSpots.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: SizeHelper.toWidth(40),
@@ -56,8 +56,8 @@ class HotspotView extends StatelessWidget {
                   ),
                   itemBuilder: (context, index) {
                     return HotspotItem(
-                      onTap: () => context.go(AppNavigation.foodDetailViewPath, extra: homeViewModel.hotspotItems[index]),
-                      hotspotModel: homeViewModel.hotspotItems[index],
+                      onTap: () => context.go(AppNavigation.foodDetailViewPath, extra: homeViewModel.hotSpots[index]),
+                      hotspotModel: homeViewModel.hotSpots[index],
                     );
                   },
                 ),
