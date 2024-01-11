@@ -11,7 +11,6 @@ mixin HomeViewMixin on State<HomeView> {
   final navbarPages = const [
     HomePage(),
     HotspotView(),
-    SizedBox(),
     FavouritePage(),
     ProfilePage(),
   ];

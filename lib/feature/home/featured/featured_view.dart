@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter/feature/home/home_view_viewmodel.dart';
 import 'package:food_delivery_flutter/feature/home/widget/featured_item.dart';
+import 'package:food_delivery_flutter/project/navigation/app_navigation.dart';
 import 'package:food_delivery_flutter/project/util/size_helper.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_icon_button.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_text.dart';
@@ -50,6 +51,7 @@ class _FeaturedViewState extends State<FeaturedView> {
                     itemBuilder: (context, index) => SizedBox(
                           height: SizeHelper.toHeight(260),
                           child: FeaturedItem(
+                            onTap: () => context.push(AppNavigation.foodDetailViewPath, extra: homeViewModel.featuredItems[index]),
                             featuredModel: homeViewModel.featuredItems[index],
                           ),
                         ),

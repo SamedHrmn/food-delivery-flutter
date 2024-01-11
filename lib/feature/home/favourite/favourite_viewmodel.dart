@@ -1,15 +1,24 @@
 import 'package:flutter/widgets.dart';
 import 'package:food_delivery_flutter/feature/home/domain/food_model.dart';
-import 'package:food_delivery_flutter/feature/home/home_view_viewmodel.dart';
 
 class FavouriteViewModel extends ChangeNotifier {
-  final HomeViewViewModel _homeViewViewModel;
-
-  FavouriteViewModel({required HomeViewViewModel homeViewViewModel}) : _homeViewViewModel = homeViewViewModel;
+  List<FoodModel> favouritesAll = [];
+  bool favouritesAllLoading = false;
 
   void updateFoodFavorite(FoodModel? foodModel) {
     if (foodModel == null) return;
 
-    _homeViewViewModel.updateHotspotItem(foodModel.copyWith(isFavourite: !foodModel.isFavourite));
+    final i = favouritesAll.indexWhere((element) => foodModel.name == element.name);
+    if (i != -1) {
+      favouritesAll.removeAt(i);
+    } else {
+      favouritesAll.add(foodModel);
+    }
+
+    notifyListeners();
+  }
+
+  bool isFavourite(FoodModel model) {
+    return favouritesAll.contains(model);
   }
 }

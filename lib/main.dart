@@ -45,7 +45,7 @@ class _MyAppState extends State<MyApp> {
           create: (context) => CartViewModel(),
         ),
         ChangeNotifierProvider(
-          create: (context) => FavouriteViewModel(homeViewViewModel: context.read<HomeViewViewModel>()),
+          create: (context) => FavouriteViewModel(),
         ),
       ],
       child: MaterialApp.router(

@@ -36,6 +36,7 @@ class _FeaturedSection extends StatelessWidget {
               padding: SizeHelper.padding(l: 20, r: 20, t: 16),
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => FeaturedItem(
+                onTap: () => context.push(AppNavigation.foodDetailViewPath, extra: homeViewModel.featuredItems[index]),
                 featuredModel: homeViewModel.featuredItems[index],
               ),
               separatorBuilder: (context, index) => SizedBox(width: SizeHelper.toWidth(24)),

@@ -8,7 +8,6 @@ class FoodModel {
   final double? rating;
   final String? duration;
   final String? imagePath;
-  final bool isFavourite;
   final List<String> extras;
 
   FoodModel({
@@ -21,7 +20,6 @@ class FoodModel {
     required this.duration,
     required this.imagePath,
     this.extras = const [],
-    this.isFavourite = false,
   });
 
   FoodModel copyWith({
@@ -45,7 +43,6 @@ class FoodModel {
       rating: rating ?? this.rating,
       duration: duration ?? this.duration,
       imagePath: imagePath ?? this.imagePath,
-      isFavourite: isFavourite ?? this.isFavourite,
       extras: extras ?? this.extras,
     );
   }

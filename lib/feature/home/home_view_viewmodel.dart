@@ -43,22 +43,7 @@ class HomeViewViewModel extends ChangeNotifier {
     FoodModel(name: 'Berry cake', price: 10.99, cal: 250, rating: 4.5, duration: "50", imagePath: Assets.images.imHotspot4.path),
   ];
 
-  int updateHotspotItem(FoodModel model) {
-    var m = getFoodModelInHotspots(model);
-    if (m == null) return -1;
-
-    _hotspotItems[_hotspotItems.indexOf(m)] = model;
-    notifyListeners();
-    return 0;
-  }
-
   List<FoodModel> get hotSpots => _hotspotItems;
 
-  FoodModel? getFoodModelInHotspots(FoodModel model) {
-    try {
-      return _hotspotItems.firstWhere((element) => element.name == model.name);
-    } catch (e) {
-      return null;
-    }
-  }
+  List<FoodModel> get foodAll => _hotspotItems + featuredItems;
 }

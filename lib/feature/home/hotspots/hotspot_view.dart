@@ -56,7 +56,7 @@ class HotspotView extends StatelessWidget {
                   ),
                   itemBuilder: (context, index) {
                     return HotspotItem(
-                      onTap: () => context.go(AppNavigation.foodDetailViewPath, extra: homeViewModel.hotSpots[index]),
+                      onTap: () => context.push(AppNavigation.foodDetailViewPath, extra: homeViewModel.hotSpots[index]),
                       hotspotModel: homeViewModel.hotSpots[index],
                     );
                   },
