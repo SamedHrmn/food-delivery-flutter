@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter/project/enum/food_category.dart';
 import 'package:food_delivery_flutter/project/util/size_helper.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_asset_image.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_text.dart';
 import 'package:gen/gen.dart';
 
@@ -22,9 +23,8 @@ class CategoryItem extends StatelessWidget {
               blurRadius: 20,
             ),
           ]),
-          child: Image.asset(
-            foodCategory.iconPath(),
-            package: 'gen',
+          child: FoodDeliveryAssetImage(
+            assetPath: foodCategory.iconPath(),
             width: 32,
             height: 32,
           ),

@@ -1,20 +1,20 @@
 import 'package:flutter/widgets.dart';
-import 'package:food_delivery_flutter/feature/home/domain/food_model.dart';
+import 'package:food_delivery_flutter/feature/shared/domain/food_model.dart';
 
 class FoodDetailViewModel extends ChangeNotifier {
   Map<String, int>? selectedExtras;
-  bool extasInitialized = false;
+  bool extrasInitialized = false;
 
-  void initExtasForSelectedFood(FoodModel foodModel) {
+  void initExtrasForSelectedFood(FoodModel foodModel) {
     selectedExtras = {};
     Map<String, int> dummy = {};
-    extasInitialized = false;
+    extrasInitialized = false;
     notifyListeners();
     for (var element in foodModel.extras) {
       dummy[element] = 1;
     }
     selectedExtras = dummy;
-    extasInitialized = true;
+    extrasInitialized = true;
     notifyListeners();
   }
 

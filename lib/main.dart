@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_flutter/feature/detail/food_detail_viewmodel.dart';
-import 'package:food_delivery_flutter/feature/home/cart/cart_viewmodel.dart';
-import 'package:food_delivery_flutter/feature/home/favourite/favourite_viewmodel.dart';
-import 'package:food_delivery_flutter/feature/home/home_view_viewmodel.dart';
+import 'package:food_delivery_flutter/feature/detail/application/food_detail_viewmodel.dart';
+import 'package:food_delivery_flutter/feature/home/cart/application/cart_viewmodel.dart';
+import 'package:food_delivery_flutter/feature/home/favourite/application/favourite_viewmodel.dart';
+import 'package:food_delivery_flutter/feature/home/hotspots/application/hotspot_viewmodel.dart';
+import 'package:food_delivery_flutter/feature/shared/presentation/home_view_viewmodel.dart';
 import 'package:food_delivery_flutter/project/navigation/app_navigation.dart';
 import 'package:food_delivery_flutter/project/util/splash_helper.dart';
 import 'package:provider/provider.dart';
@@ -47,9 +48,15 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(
           create: (context) => FavouriteViewModel(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => HotspotViewModel(homeViewViewModel: context.read<HomeViewViewModel>()),
+        ),
       ],
       child: MaterialApp.router(
-        title: 'Material App',
+        builder: (context, child) => GestureDetector(
+          onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+          child: child,
+        ),
         debugShowCheckedModeBanner: false,
         routerConfig: AppNavigation.router,
       ),

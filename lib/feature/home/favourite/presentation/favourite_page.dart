@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_flutter/feature/home/domain/food_model.dart';
-import 'package:food_delivery_flutter/feature/home/favourite/favourite_viewmodel.dart';
+import 'package:food_delivery_flutter/feature/shared/domain/food_model.dart';
+import 'package:food_delivery_flutter/feature/home/favourite/application/favourite_viewmodel.dart';
+import 'package:food_delivery_flutter/project/constant/string_constant.dart';
 import 'package:food_delivery_flutter/project/util/size_helper.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_asset_image.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_favourite_button.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_text.dart';
 import 'package:gen/gen.dart';
@@ -22,7 +24,7 @@ class _FavouritePageState extends State<FavouritePage> {
         children: [
           SizedBox(
             height: SizeHelper.toHeight(40),
-            child: const TextFoodDelivery(text: 'Favourites', size: 22),
+            child: const TextFoodDelivery(text: StringConstant.favourites, size: 22),
           ),
           Consumer<FavouriteViewModel>(builder: (context, favouritesViewModel, _) {
             if (favouritesViewModel.favouritesAllLoading) {
@@ -31,7 +33,7 @@ class _FavouritePageState extends State<FavouritePage> {
               );
             } else if (favouritesViewModel.favouritesAll.isEmpty) {
               return const TextFoodDelivery(
-                text: 'There is no favourites',
+                text: StringConstant.noFavourites,
                 size: 20,
                 fontWeight: FontWeight.w400,
               );
@@ -75,12 +77,10 @@ class FavouriteItem extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: Image.asset(
-                  foodModel.imagePath ?? '',
-                  package: 'gen',
+                child: FoodDeliveryAssetImage(
+                  assetPath: foodModel.imagePath ?? '',
                   width: double.maxFinite,
                   fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) => const Placeholder(),
                 ),
               ),
               Positioned(
@@ -102,7 +102,7 @@ class FavouriteItem extends StatelessWidget {
               children: [
                 TextFoodDelivery(text: foodModel.name ?? '', size: 16, fontWeight: FontWeight.w500),
                 TextFoodDelivery(
-                  text: '\$${foodModel.deliveryFee?.toString() ?? ''} Delivery Fee.${foodModel.duration ?? ''} min',
+                  text: '\$${foodModel.deliveryFee?.toString() ?? ''} ${StringConstant.deliveryFee}.${foodModel.duration ?? ''} ${StringConstant.min}',
                   size: 11,
                   fontWeight: FontWeight.w400,
                   color: FoodDeliveryColors.black1.withOpacity(0.6),

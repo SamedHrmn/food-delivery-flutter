@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_flutter/feature/splash/splash_page_mixin.dart';
+import 'package:food_delivery_flutter/feature/onboarding/presentation/onboard_view_mixin.dart';
+import 'package:food_delivery_flutter/project/constant/string_constant.dart';
 import 'package:food_delivery_flutter/project/navigation/app_navigation.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_asset_image.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_button.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_text.dart';
 import 'package:food_delivery_flutter/project/widget/splash_indicator.dart';
 import 'package:go_router/go_router.dart';
 
-class SplashPage extends StatefulWidget {
-  const SplashPage({super.key});
+class OnboardView extends StatefulWidget {
+  const OnboardView({super.key});
 
   @override
-  State<SplashPage> createState() => _SplashPageState();
+  State<OnboardView> createState() => _OnboardViewState();
 }
 
-class _SplashPageState extends State<SplashPage> with SplashPageMixin {
+class _OnboardViewState extends State<OnboardView> with OnboardViewMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +26,7 @@ class _SplashPageState extends State<SplashPage> with SplashPageMixin {
               controller: pageController,
               onPageChanged: updatePageViewIndex,
               itemCount: splashContents.length,
-              itemBuilder: (context, index) => SplashContent(
+              itemBuilder: (context, index) => OnboardContent(
                 imPath: splashContents[index].imPath,
                 header: splashContents[index].header,
                 text: splashContents[index].text,
@@ -49,7 +51,7 @@ class _SplashPageState extends State<SplashPage> with SplashPageMixin {
                         ],
                       )
                     : FoodDeliveryButton(
-                        text: 'Get Started',
+                        text: StringConstant.getStarted,
                         onPressed: () => context.go(AppNavigation.authViewPath),
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                       ),
@@ -62,8 +64,8 @@ class _SplashPageState extends State<SplashPage> with SplashPageMixin {
   }
 }
 
-class SplashContent extends StatelessWidget {
-  const SplashContent({
+class OnboardContent extends StatelessWidget {
+  const OnboardContent({
     super.key,
     required this.imPath,
     required this.header,
@@ -81,9 +83,8 @@ class SplashContent extends StatelessWidget {
       child: Column(
         children: [
           Expanded(
-            child: Image.asset(
-              imPath,
-              package: 'gen',
+            child: FoodDeliveryAssetImage(
+              assetPath: imPath,
             ),
           ),
           TextFoodDelivery(text: header, size: 26),

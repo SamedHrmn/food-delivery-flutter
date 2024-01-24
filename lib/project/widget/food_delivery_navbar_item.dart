@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_flutter/feature/home/home_view_viewmodel.dart';
+import 'package:food_delivery_flutter/feature/shared/presentation/home_view_viewmodel.dart';
+import 'package:food_delivery_flutter/project/enum/navbar_pages.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_icon_button.dart';
 import 'package:gen/gen.dart';
 import 'package:provider/provider.dart';
 
 class FoodDeliveryNavBarItem extends StatelessWidget {
-  const FoodDeliveryNavBarItem({super.key, required this.iconPath, required this.itemIndex});
+  const FoodDeliveryNavBarItem({super.key, required this.iconPath, required this.page});
 
   final String iconPath;
-  final int itemIndex;
+  final NavbarPages page;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class FoodDeliveryNavBarItem extends StatelessWidget {
       children: [
         FoodDeliveryIconButton.image(
           onTap: () {
-            context.read<HomeViewViewModel>().pageController?.jumpToPage(itemIndex);
+            context.read<HomeViewViewModel>().toNavbarPage(page);
           },
           iconPath: iconPath,
           size: 22,
@@ -30,7 +31,7 @@ class FoodDeliveryNavBarItem extends StatelessWidget {
             height: 6,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: pageIndex == itemIndex ? FoodDeliveryColors.yellow1 : Colors.transparent,
+              color: pageIndex == page.index ? FoodDeliveryColors.yellow1 : Colors.transparent,
             ),
           ),
         ),

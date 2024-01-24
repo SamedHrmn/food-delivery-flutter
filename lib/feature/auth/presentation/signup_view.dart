@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_flutter/project/constant/string_constant.dart';
 import 'package:food_delivery_flutter/project/navigation/app_navigation.dart';
 import 'package:food_delivery_flutter/project/util/size_helper.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_asset_image.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_button.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_text.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_text_field.dart';
@@ -18,75 +20,46 @@ class SignupView extends StatelessWidget {
         return false;
       },
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             children: [
               Expanded(
                 flex: 2,
-                child: Padding(
-                  padding: EdgeInsets.only(top: SizeHelper.toHeight(62), bottom: SizeHelper.toHeight(47)),
-                  child: Image.asset(
-                    Assets.images.imSplashIcon.path,
-                    package: 'gen',
-                    width: SizeHelper.toWidth(149),
-                    height: SizeHelper.toHeight(110),
-                  ),
-                ),
+                child: topImage(),
               ),
-              const FoodDeliveryTextField(hintText: 'Email'),
+              const FoodDeliveryTextField(hintText: StringConstant.emailHint),
               SizedBox(height: SizeHelper.toHeight(28)),
-              const FoodDeliveryTextField(hintText: 'Password'),
+              const FoodDeliveryTextField(hintText: StringConstant.passwordHint),
               SizedBox(height: SizeHelper.toHeight(28)),
-              const FoodDeliveryTextField(hintText: 'Confirm password'),
+              const FoodDeliveryTextField(hintText: StringConstant.confirmPasswordHint),
               SizedBox(height: SizeHelper.toHeight(28)),
               FoodDeliveryButton(
-                text: 'Sign up',
+                text: StringConstant.signup,
                 onPressed: () {
                   context.go(AppNavigation.homePagePath);
                 },
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: SizeHelper.toHeight(32)),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        height: 1,
-                        margin: const EdgeInsets.only(left: 32, right: 16),
-                        color: Colors.black,
-                        width: double.maxFinite,
-                      ),
-                    ),
-                    const TextFoodDelivery(
-                      text: "OR",
-                      size: 15,
-                    ),
-                    Expanded(
-                      child: Container(
-                        height: 1,
-                        margin: const EdgeInsets.only(right: 32, left: 16),
-                        color: Colors.black,
-                        width: double.maxFinite,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              orBlock(),
               FoodDeliveryButton.icon(
-                text: 'Sign Up with Google',
+                text: StringConstant.signupGoogle,
                 iconPath: Assets.images.icGoogle.path,
                 backgroundColor: FoodDeliveryColors.white1,
                 hasBorder: true,
-                onPressed: () {},
+                onPressed: () {
+                  context.go(AppNavigation.homePagePath);
+                },
               ),
               SizedBox(height: SizeHelper.toHeight(21)),
               FoodDeliveryButton.icon(
-                text: 'Sign Up with Facebook',
+                text: StringConstant.signupFacebook,
                 iconPath: Assets.images.icFacebook.path,
                 backgroundColor: FoodDeliveryColors.white1,
                 hasBorder: true,
-                onPressed: () {},
+                onPressed: () {
+                  context.go(AppNavigation.homePagePath);
+                },
               ),
               SizedBox(height: SizeHelper.toHeight(32)),
               InkWell(
@@ -94,7 +67,7 @@ class SignupView extends StatelessWidget {
                   context.pushReplacement(AppNavigation.loginViewPath);
                 },
                 child: const TextFoodDelivery(
-                  text: "Already have an account? Log in",
+                  text: StringConstant.alreadyHaveAccount,
                   size: 15,
                   fontWeight: FontWeight.w400,
                 ),
@@ -103,6 +76,47 @@ class SignupView extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Padding orBlock() {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: SizeHelper.toHeight(32)),
+      child: Row(
+        children: [
+          Expanded(
+            child: Container(
+              height: 1,
+              margin: const EdgeInsets.only(left: 32, right: 16),
+              color: Colors.black,
+              width: double.maxFinite,
+            ),
+          ),
+          const TextFoodDelivery(
+            text: StringConstant.or,
+            size: 15,
+          ),
+          Expanded(
+            child: Container(
+              height: 1,
+              margin: const EdgeInsets.only(right: 32, left: 16),
+              color: Colors.black,
+              width: double.maxFinite,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Padding topImage() {
+    return Padding(
+      padding: EdgeInsets.only(top: SizeHelper.toHeight(62), bottom: SizeHelper.toHeight(47)),
+      child: FoodDeliveryAssetImage(
+        assetPath: Assets.images.imSplashIcon.path,
+        width: 149,
+        height: 110,
       ),
     );
   }

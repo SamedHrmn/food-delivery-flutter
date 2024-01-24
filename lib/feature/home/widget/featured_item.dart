@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_flutter/project/constant/string_constant.dart';
 import 'package:food_delivery_flutter/project/util/size_helper.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_asset_image.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_favourite_button.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_text.dart';
 import 'package:gen/gen.dart';
 
-import '../domain/food_model.dart';
+import '../../shared/domain/food_model.dart';
 
 class FeaturedItem extends StatelessWidget {
   const FeaturedItem({super.key, required this.featuredModel, required this.onTap});
@@ -26,12 +28,10 @@ class FeaturedItem extends StatelessWidget {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
-                      featuredModel.imagePath ?? '',
-                      package: 'gen',
+                    child: FoodDeliveryAssetImage(
+                      assetPath: featuredModel.imagePath ?? '',
                       width: double.maxFinite,
                       fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) => const Placeholder(),
                     ),
                   ),
                   if (featuredModel.specialText != null) ...{
@@ -72,7 +72,7 @@ class FeaturedItem extends StatelessWidget {
                   children: [
                     TextFoodDelivery(text: featuredModel.name ?? '', size: 16, fontWeight: FontWeight.w500),
                     TextFoodDelivery(
-                      text: '\$${featuredModel.deliveryFee?.toString() ?? ''} Delivery Fee.${featuredModel.duration ?? ''} min',
+                      text: '\$${featuredModel.deliveryFee?.toString() ?? ''} ${StringConstant.deliveryFee}.${featuredModel.duration ?? ''} ${StringConstant.min}',
                       size: 11,
                       fontWeight: FontWeight.w400,
                       color: FoodDeliveryColors.black1.withOpacity(0.6),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_flutter/project/constant/string_constant.dart';
 import 'package:food_delivery_flutter/project/navigation/app_navigation.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_asset_image.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_button.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_text.dart';
 import 'package:gen/gen.dart';
@@ -17,15 +19,14 @@ class AuthView extends StatelessWidget {
           children: [
             const SizedBox(height: 42),
             Expanded(
-              child: Image.asset(
-                Assets.images.imRegister.path,
-                package: 'gen',
+              child: FoodDeliveryAssetImage(
+                assetPath: Assets.images.imRegister.path,
               ),
             ),
-            const TextFoodDelivery(text: 'Welcome to Super Foodo', size: 24),
+            const TextFoodDelivery(text: StringConstant.authHeader, size: 24),
             const SizedBox(height: 12),
             const TextFoodDelivery(
-              text: 'Lorem ipsum dolor sit amet consectetur. Ut cras pellentesque',
+              text: StringConstant.authContent,
               size: 13,
               fontWeight: FontWeight.w400,
             ),
@@ -33,12 +34,12 @@ class AuthView extends StatelessWidget {
               constraints: const BoxConstraints.expand(height: 32),
             ),
             FoodDeliveryButton(
-              text: 'Create Account',
+              text: StringConstant.createAccount,
               onPressed: () => context.push(AppNavigation.signupViewPath),
             ),
             const SizedBox(height: 12),
             FoodDeliveryButton(
-              text: 'Login',
+              text: StringConstant.login,
               onPressed: () => context.push(AppNavigation.loginViewPath),
               hasBorder: true,
               backgroundColor: FoodDeliveryColors.white1,
@@ -46,7 +47,7 @@ class AuthView extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(vertical: 42),
               child: TextFoodDelivery(
-                text: 'By Registering or Login you have agreed to these Terms and Conditions.',
+                text: StringConstant.authTermsOfCondition,
                 size: 13,
               ),
             ),

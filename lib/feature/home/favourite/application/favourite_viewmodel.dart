@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:food_delivery_flutter/feature/home/domain/food_model.dart';
+import 'package:food_delivery_flutter/feature/shared/domain/food_model.dart';
 
 class FavouriteViewModel extends ChangeNotifier {
   List<FoodModel> favouritesAll = [];

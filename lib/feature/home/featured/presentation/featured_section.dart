@@ -1,7 +1,17 @@
-part of '../home_page.dart';
+import 'package:flutter/material.dart';
+import 'package:food_delivery_flutter/feature/home/widget/featured_item.dart';
+import 'package:food_delivery_flutter/feature/shared/presentation/home_view_viewmodel.dart';
+import 'package:food_delivery_flutter/project/constant/string_constant.dart';
+import 'package:food_delivery_flutter/project/navigation/app_navigation.dart';
+import 'package:food_delivery_flutter/project/util/size_helper.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_icon_button.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_text.dart';
+import 'package:gen/gen.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
-class _FeaturedSection extends StatelessWidget {
-  const _FeaturedSection({super.key});
+class FeaturedSection extends StatelessWidget {
+  const FeaturedSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +24,7 @@ class _FeaturedSection extends StatelessWidget {
             children: [
               const Expanded(
                 child: TextFoodDelivery(
-                  text: 'Featured on Super Foodo',
+                  text: StringConstant.featureOnSuperFoodo,
                   size: 20,
                   textAlign: TextAlign.start,
                 ),

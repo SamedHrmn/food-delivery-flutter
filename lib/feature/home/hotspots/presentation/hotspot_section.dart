@@ -1,7 +1,17 @@
-part of '../home_page.dart';
+import 'package:flutter/material.dart';
+import 'package:food_delivery_flutter/feature/home/widget/hotspot_item.dart';
+import 'package:food_delivery_flutter/feature/shared/presentation/home_view_viewmodel.dart';
+import 'package:food_delivery_flutter/project/enum/navbar_pages.dart';
+import 'package:food_delivery_flutter/project/navigation/app_navigation.dart';
+import 'package:food_delivery_flutter/project/util/size_helper.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_icon_button.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_text.dart';
+import 'package:gen/gen.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
-class _HotspotSection extends StatelessWidget {
-  const _HotspotSection();
+class HotspotSection extends StatelessWidget {
+  const HotspotSection();
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +32,7 @@ class _HotspotSection extends StatelessWidget {
               FoodDeliveryIconButton(
                 color: FoodDeliveryColors.gray4,
                 onTap: () {
-                  context.push(AppNavigation.hotspotViewPath);
+                  context.read<HomeViewViewModel>().toNavbarPage(NavbarPages.hotspot);
                 },
                 iconData: Icons.arrow_forward,
               )

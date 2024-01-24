@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_flutter/project/enum/navbar_pages.dart';
 import 'package:food_delivery_flutter/project/util/size_helper.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_asset_image.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_navbar_item.dart';
 import 'package:gen/gen.dart';
 
@@ -19,13 +21,13 @@ class FoodDeliveryBottomNavBar extends StatelessWidget {
           children: [
             Row(
               children: [
-                FoodDeliveryNavBarItem(iconPath: Assets.images.icHome.path, itemIndex: 0),
+                FoodDeliveryNavBarItem(iconPath: Assets.images.icHome.path, page: NavbarPages.home),
                 const Spacer(flex: 2),
-                FoodDeliveryNavBarItem(iconPath: Assets.images.icSearch.path, itemIndex: 1),
+                FoodDeliveryNavBarItem(iconPath: Assets.images.icSearch.path, page: NavbarPages.hotspot),
                 const Spacer(flex: 5),
-                FoodDeliveryNavBarItem(iconPath: Assets.images.icFav.path, itemIndex: 2),
+                FoodDeliveryNavBarItem(iconPath: Assets.images.icFav.path, page: NavbarPages.favourite),
                 const Spacer(flex: 2),
-                FoodDeliveryNavBarItem(iconPath: Assets.images.icAccount.path, itemIndex: 3),
+                FoodDeliveryNavBarItem(iconPath: Assets.images.icAccount.path, page: NavbarPages.profile),
               ],
             ),
             Positioned(
@@ -41,9 +43,8 @@ class FoodDeliveryBottomNavBar extends StatelessWidget {
                   customBorder: const CircleBorder(),
                   child: Padding(
                     padding: const EdgeInsets.all(16),
-                    child: Image.asset(
-                      Assets.images.icBag.path,
-                      package: 'gen',
+                    child: FoodDeliveryAssetImage(
+                      assetPath: Assets.images.icBag.path,
                     ),
                   ),
                 ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_flutter/feature/home/domain/food_model.dart';
+import 'package:food_delivery_flutter/feature/shared/domain/food_model.dart';
 import 'package:food_delivery_flutter/project/util/size_helper.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_asset_image.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_text.dart';
 import 'package:gen/gen.dart';
 
@@ -37,12 +38,10 @@ class HotspotItem extends StatelessWidget {
             child: Column(
               children: [
                 Expanded(
-                  child: Image.asset(
-                    hotspotModel.imagePath ?? '',
-                    package: 'gen',
-                    width: SizeHelper.toWidth(140),
+                  child: FoodDeliveryAssetImage(
+                    assetPath: hotspotModel.imagePath ?? '',
+                    width: 140,
                     fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) => const Placeholder(),
                   ),
                 ),
                 Padding(

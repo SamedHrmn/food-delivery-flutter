@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_flutter/feature/home/home_view_viewmodel.dart';
+import 'package:food_delivery_flutter/feature/shared/presentation/home_view_viewmodel.dart';
 import 'package:food_delivery_flutter/feature/home/widget/featured_item.dart';
+import 'package:food_delivery_flutter/project/constant/string_constant.dart';
 import 'package:food_delivery_flutter/project/navigation/app_navigation.dart';
 import 'package:food_delivery_flutter/project/util/size_helper.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_icon_button.dart';
@@ -34,7 +35,7 @@ class _FeaturedViewState extends State<FeaturedView> {
                       size: 29,
                     ),
                     const Expanded(
-                      child: TextFoodDelivery(text: 'Featured', size: 22),
+                      child: TextFoodDelivery(text: StringConstant.featured, size: 22),
                     ),
                     SizedBox(
                       width: SizeHelper.toWidth(29),

@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_flutter/project/enum/navbar_pages.dart';
 import 'package:gen/gen.dart';
 
-import 'domain/food_model.dart';
+import '../domain/food_model.dart';
 
 class HomeViewViewModel extends ChangeNotifier {
   int _pageIndex = 0;
-  PageController? pageController;
+  PageController? _pageController;
 
   void updatePageIndex(int i) {
     _pageIndex = i;
     notifyListeners();
+  }
+
+  void initializePageController(PageController controller) {
+    _pageController = controller;
+  }
+
+  void toNavbarPage(NavbarPages page) {
+    _pageController?.jumpToPage(page.index);
   }
 
   int get pageIndex => _pageIndex;

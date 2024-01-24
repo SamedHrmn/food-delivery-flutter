@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_flutter/project/constant/string_constant.dart';
 import 'package:food_delivery_flutter/project/navigation/app_navigation.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_asset_image.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_button.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_text.dart';
 import 'package:gen/gen.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../project/widget/food_delivery_text_field.dart';
+import '../../../project/widget/food_delivery_text_field.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -18,35 +20,21 @@ class LoginView extends StatelessWidget {
         return false;
       },
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             children: [
               Expanded(
                 flex: 2,
-                child: Image.asset(
-                  Assets.images.imSplashIcon.path,
-                  package: 'gen',
-                  width: 180,
-                  height: 140,
-                ),
+                child: topImage(),
               ),
-              const FoodDeliveryTextField(hintText: 'Email'),
+              const FoodDeliveryTextField(hintText: StringConstant.emailHint),
               const SizedBox(height: 24),
-              const FoodDeliveryTextField(hintText: 'Password'),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 24),
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: TextFoodDelivery(
-                    text: 'Forget Password?',
-                    size: 15,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-              ),
+              const FoodDeliveryTextField(hintText: StringConstant.passwordHint),
+              forgetPassword(),
               FoodDeliveryButton(
-                text: 'Login',
+                text: StringConstant.login,
                 onPressed: () {
                   context.go(AppNavigation.homePagePath);
                 },
@@ -57,7 +45,7 @@ class LoginView extends StatelessWidget {
                   context.pushReplacement(AppNavigation.signupViewPath);
                 },
                 child: const TextFoodDelivery(
-                  text: "Don't have an account? Sign up",
+                  text: StringConstant.dontHaveAccount,
                   size: 15,
                   fontWeight: FontWeight.w400,
                 ),
@@ -67,6 +55,28 @@ class LoginView extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Padding forgetPassword() {
+    return const Padding(
+      padding: EdgeInsets.symmetric(vertical: 24),
+      child: Align(
+        alignment: Alignment.centerRight,
+        child: TextFoodDelivery(
+          text: StringConstant.forgetPassword,
+          size: 15,
+          fontWeight: FontWeight.w400,
+        ),
+      ),
+    );
+  }
+
+  FoodDeliveryAssetImage topImage() {
+    return FoodDeliveryAssetImage(
+      assetPath: Assets.images.imSplashIcon.path,
+      width: 180,
+      height: 140,
     );
   }
 }

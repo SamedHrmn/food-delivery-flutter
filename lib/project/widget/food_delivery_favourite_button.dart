@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_flutter/feature/home/domain/food_model.dart';
-import 'package:food_delivery_flutter/feature/home/favourite/favourite_viewmodel.dart';
+import 'package:food_delivery_flutter/feature/shared/domain/food_model.dart';
+import 'package:food_delivery_flutter/feature/home/favourite/application/favourite_viewmodel.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_icon_button.dart';
 import 'package:provider/provider.dart';
 

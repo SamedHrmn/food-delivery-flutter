@@ -1,20 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_flutter/feature/home/home_view_viewmodel.dart';
+import 'package:food_delivery_flutter/feature/home/featured/presentation/featured_section.dart';
+import 'package:food_delivery_flutter/feature/home/hotspots/presentation/hotspot_section.dart';
 import 'package:food_delivery_flutter/feature/home/widget/category_item.dart';
-import 'package:food_delivery_flutter/feature/home/widget/featured_item.dart';
-import 'package:food_delivery_flutter/feature/home/widget/hotspot_item.dart';
 import 'package:food_delivery_flutter/feature/home/widget/search_text_field.dart';
 import 'package:food_delivery_flutter/project/enum/food_category.dart';
-import 'package:food_delivery_flutter/project/navigation/app_navigation.dart';
 import 'package:food_delivery_flutter/project/util/size_helper.dart';
-import 'package:food_delivery_flutter/project/widget/food_delivery_icon_button.dart';
-import 'package:food_delivery_flutter/project/widget/food_delivery_text.dart';
-import 'package:gen/gen.dart';
-import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
-
-part 'featured/featured_section.dart';
-part 'hotspots/hotspot_section.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -33,9 +23,9 @@ class _HomePageState extends State<HomePage> {
             SizedBox(height: SizeHelper.toHeight(20)),
             searchSuperFoodo(),
             categoriesListView(),
-            const _FeaturedSection(),
+            const FeaturedSection(),
             SizedBox(height: SizeHelper.toHeight(16)),
-            const _HotspotSection(),
+            const HotspotSection(),
           ],
         ),
       ),
