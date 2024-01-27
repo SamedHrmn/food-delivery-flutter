@@ -40,4 +40,11 @@ final class StringConstant {
   static const noExtras = 'There is no extras for';
   static const comesWith = 'Comes With';
   static const cal = 'cal';
+
+  static const passwordEmptyError = 'Password can not be empty';
+  static const passwordDoesNotMatchError = 'Password does not match';
+  static const signupFormError = 'Form error';
+  static const emailValidError = 'Enter a valid email address';
+  static const yourCards = 'Your Cards';
+  static const addCard = 'Add Card';
 }

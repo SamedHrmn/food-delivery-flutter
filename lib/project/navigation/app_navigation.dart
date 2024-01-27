@@ -3,6 +3,7 @@ import 'package:food_delivery_flutter/feature/auth/presentation/login_view.dart'
 import 'package:food_delivery_flutter/feature/auth/presentation/signup_view.dart';
 import 'package:food_delivery_flutter/feature/detail/presentation/food_detail_view.dart';
 import 'package:food_delivery_flutter/feature/home/cart/presentation/cart_view.dart';
+import 'package:food_delivery_flutter/feature/payment/presentation/add_card_view.dart';
 import 'package:food_delivery_flutter/feature/shared/domain/food_model.dart';
 import 'package:food_delivery_flutter/feature/home/featured/presentation/featured_view.dart';
 import 'package:food_delivery_flutter/feature/shared/presentation/home_view.dart';
@@ -20,6 +21,7 @@ final class AppNavigation {
   static const featuredViewPath = '/home/featured';
   static const foodDetailViewPath = '/detail';
   static const cartViewPath = '/cart';
+  static const addCardViewPath = '/addCard';
 
   static final router = GoRouter(
     routes: [
@@ -71,6 +73,12 @@ final class AppNavigation {
           return CartView(
             foodModel: state.extra as FoodModel,
           );
+        },
+      ),
+      GoRoute(
+        path: addCardViewPath,
+        builder: (context, state) {
+          return const AddCardView();
         },
       ),
     ],
