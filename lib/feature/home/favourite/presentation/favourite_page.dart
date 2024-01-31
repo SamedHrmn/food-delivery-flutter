@@ -3,7 +3,7 @@ import 'package:food_delivery_flutter/feature/shared/domain/food_model.dart';
 import 'package:food_delivery_flutter/feature/home/favourite/application/favourite_viewmodel.dart';
 import 'package:food_delivery_flutter/project/constant/string_constant.dart';
 import 'package:food_delivery_flutter/project/util/size_helper.dart';
-import 'package:food_delivery_flutter/project/widget/food_delivery_asset_image.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_image.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_favourite_button.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_text.dart';
 import 'package:gen/gen.dart';
@@ -77,8 +77,8 @@ class FavouriteItem extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: FoodDeliveryAssetImage(
-                  assetPath: foodModel.imagePath ?? '',
+                child: FoodDeliveryImage(
+                  pathOrUrl: foodModel.imagePath ?? '',
                   width: double.maxFinite,
                   fit: BoxFit.cover,
                 ),

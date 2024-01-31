@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter/feature/home/profile/application/profile_view_model.dart';
 import 'package:food_delivery_flutter/feature/shared/presentation/home_view_mixin.dart';
+import 'package:food_delivery_flutter/feature/shared/presentation/home_view_viewmodel.dart';
 import 'package:food_delivery_flutter/project/enum/navbar_pages.dart';
 import 'package:food_delivery_flutter/project/util/size_helper.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_bottom_navbar.dart';
@@ -19,6 +20,13 @@ class _HomeViewState extends State<HomeView> with HomeViewMixin {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Future.wait([
+        context.read<HomeViewViewModel>().getFeaturedItems(),
+        context.read<HomeViewViewModel>().getHotspotItems(),
+      ]);
+    });
 
     final user = context.read<ProfileViewModel>().foodUser;
 

@@ -5,7 +5,7 @@ import 'package:food_delivery_flutter/feature/shared/domain/food_model.dart';
 import 'package:food_delivery_flutter/project/constant/string_constant.dart';
 import 'package:food_delivery_flutter/project/navigation/app_navigation.dart';
 import 'package:food_delivery_flutter/project/util/size_helper.dart';
-import 'package:food_delivery_flutter/project/widget/food_delivery_asset_image.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_image.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_button.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_favourite_button.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_icon_button.dart';
@@ -96,9 +96,9 @@ class _FoodDetailViewState extends State<FoodDetailView> {
     );
   }
 
-  FoodDeliveryAssetImage foodImage() {
-    return FoodDeliveryAssetImage(
-      assetPath: widget.foodModel.imagePath ?? '',
+  FoodDeliveryImage foodImage() {
+    return FoodDeliveryImage(
+      pathOrUrl: widget.foodModel.imagePath ?? '',
       height: 200,
     );
   }
@@ -179,8 +179,8 @@ class _FoodDetailViewState extends State<FoodDetailView> {
   ColoredBox background() {
     return ColoredBox(
       color: const Color(0xfffbdb3f),
-      child: FoodDeliveryAssetImage(
-        assetPath: Assets.images.imFoodDetailBg.path,
+      child: FoodDeliveryImage(
+        pathOrUrl: Assets.images.imFoodDetailBg.path,
         color: const Color(0xffec9e00),
       ),
     );
@@ -201,8 +201,8 @@ class DetailInformationItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        FoodDeliveryAssetImage(
-          assetPath: iconPath,
+        FoodDeliveryImage(
+          pathOrUrl: iconPath,
           width: 20,
           height: 20,
         ),

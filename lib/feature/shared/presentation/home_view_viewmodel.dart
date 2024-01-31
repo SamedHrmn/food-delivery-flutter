@@ -1,12 +1,23 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:food_delivery_flutter/feature/shared/data/api_response.dart';
+
 import 'package:food_delivery_flutter/project/enum/navbar_pages.dart';
-import 'package:gen/gen.dart';
+import 'package:food_delivery_flutter/project/usecase/get_featured_usecase.dart';
+import 'package:food_delivery_flutter/project/usecase/get_hotspot_usecase.dart';
 
 import '../domain/food_model.dart';
 
 class HomeViewViewModel extends ChangeNotifier {
   int _pageIndex = 0;
   PageController? _pageController;
+  final GetFeaturedUseCase getFeaturedUseCase;
+  final GetHotspotUseCase getHotspotUseCase;
+
+  HomeViewViewModel({
+    required this.getFeaturedUseCase,
+    required this.getHotspotUseCase,
+  });
 
   void updatePageIndex(int i) {
     _pageIndex = i;
@@ -23,36 +34,32 @@ class HomeViewViewModel extends ChangeNotifier {
 
   int get pageIndex => _pageIndex;
 
-  final featuredItems = [
-    FoodModel(
-        name: 'McDonald’s(Best Offer)',
-        specialText: "Free Item(Spend \$10)",
-        deliveryFee: 4.99,
-        price: 20,
-        cal: 200,
-        rating: 4.5,
-        duration: "15-30",
-        imagePath: Assets.images.imBurgerMealWithFrenchFries.path),
-    FoodModel(
-      name: 'Supreme Pizza',
-      specialText: "Buy 1 Get 1 Free",
-      deliveryFee: 2.99,
-      price: 20,
-      cal: 200,
-      rating: 4.5,
-      duration: "15-30",
-      imagePath: Assets.images.imDeliciousPizzaIndoors.path,
-    ),
-  ];
+  ApiResponse<List<FoodModel>> featuredItemsResponse = ApiResponse.init();
+  ApiResponse<List<FoodModel>> hotspotItemsResponse = ApiResponse.init();
 
-  final _hotspotItems = [
-    FoodModel(name: 'Mc Double', price: 20.99, cal: 250, rating: 4.5, duration: "50", imagePath: Assets.images.imHotspot1.path, extras: ["Ketchup", "Cheese"]),
-    FoodModel(name: 'Supreme Pizza', price: 15.99, cal: 250, rating: 4.5, duration: "50", imagePath: Assets.images.imHotspot2.path),
-    FoodModel(name: 'Chicken Wings', price: 25.99, cal: 250, rating: 4.5, duration: "50", imagePath: Assets.images.imHotspot3.path),
-    FoodModel(name: 'Berry cake', price: 10.99, cal: 250, rating: 4.5, duration: "50", imagePath: Assets.images.imHotspot4.path),
-  ];
+  Future<void> getFeaturedItems() async {
+    try {
+      featuredItemsResponse = ApiResponse.loading();
+      notifyListeners();
+      final items = await getFeaturedUseCase(null);
+      featuredItemsResponse = ApiResponse.completed(items);
+    } catch (e) {
+      featuredItemsResponse = ApiResponse.error(e.toString());
+    }
 
-  List<FoodModel> get hotSpots => _hotspotItems;
+    notifyListeners();
+  }
 
-  List<FoodModel> get foodAll => _hotspotItems + featuredItems;
+  Future<void> getHotspotItems() async {
+    try {
+      hotspotItemsResponse = ApiResponse.loading();
+      notifyListeners();
+      final items = await getHotspotUseCase(null);
+      hotspotItemsResponse = ApiResponse.completed(items);
+    } catch (e) {
+      hotspotItemsResponse = ApiResponse.error(e.toString());
+    }
+
+    notifyListeners();
+  }
 }

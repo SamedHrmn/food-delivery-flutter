@@ -5,21 +5,23 @@ import 'package:food_delivery_flutter/feature/shared/presentation/home_view_view
 class HotspotViewModel extends ChangeNotifier {
   final HomeViewViewModel homeViewViewModel;
   HotspotViewModel({required this.homeViewViewModel}) {
-    searchItems = homeViewViewModel.hotSpots;
+    hotSpots = homeViewViewModel.hotspotItemsResponse.data ?? [];
+    searchItems = hotSpots;
   }
 
   late List<FoodModel> searchItems;
+  late final List<FoodModel> hotSpots;
 
   void updateSearchItems(String foodName) {
     if (foodName.isEmpty) {
-      searchItems = homeViewViewModel.hotSpots;
+      searchItems = hotSpots;
       notifyListeners();
       return;
     }
 
     searchItems = [];
 
-    for (var element in homeViewViewModel.hotSpots) {
+    for (var element in hotSpots) {
       if (element.name?.toLowerCase().startsWith(foodName.toLowerCase()) == true) {
         if (!searchItems.contains(element)) {
           searchItems.add(element);

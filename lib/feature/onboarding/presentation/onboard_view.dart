@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter/feature/onboarding/presentation/onboard_view_mixin.dart';
 import 'package:food_delivery_flutter/project/constant/string_constant.dart';
 import 'package:food_delivery_flutter/project/navigation/app_navigation.dart';
-import 'package:food_delivery_flutter/project/widget/food_delivery_asset_image.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_image.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_button.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_text.dart';
 import 'package:food_delivery_flutter/project/widget/splash_indicator.dart';
@@ -83,8 +83,8 @@ class OnboardContent extends StatelessWidget {
       child: Column(
         children: [
           Expanded(
-            child: FoodDeliveryAssetImage(
-              assetPath: imPath,
+            child: FoodDeliveryImage(
+              pathOrUrl: imPath,
             ),
           ),
           TextFoodDelivery(text: header, size: 26),

@@ -1,7 +1,7 @@
 import 'package:component/component.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter/project/util/size_helper.dart';
-import 'package:food_delivery_flutter/project/widget/food_delivery_asset_image.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_image.dart';
 
 class FoodDeliveryIconButton extends StatelessWidget {
   const FoodDeliveryIconButton._({super.key, required this.onTap, this.iconPath, this.iconData, this.color, this.size, this.padding});
@@ -60,8 +60,8 @@ class FoodDeliveryIconButton extends StatelessWidget {
                 iconData!,
                 size: SizeHelper.toHeight(size ?? 20),
               )
-            : FoodDeliveryAssetImage(
-                assetPath: iconPath ?? '',
+            : FoodDeliveryImage(
+                pathOrUrl: iconPath ?? '',
                 color: Colors.black,
                 width: size ?? 20,
               ),

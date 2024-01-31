@@ -7,13 +7,17 @@ import 'package:food_delivery_flutter/feature/home/hotspots/application/hotspot_
 import 'package:food_delivery_flutter/feature/home/profile/application/profile_view_model.dart';
 import 'package:food_delivery_flutter/feature/payment/application/payment_view_model.dart';
 import 'package:food_delivery_flutter/feature/shared/presentation/home_view_viewmodel.dart';
+import 'package:food_delivery_flutter/project/di/locator.dart';
 import 'package:food_delivery_flutter/project/navigation/app_navigation.dart';
+import 'package:food_delivery_flutter/project/usecase/get_featured_usecase.dart';
+import 'package:food_delivery_flutter/project/usecase/get_hotspot_usecase.dart';
 import 'package:food_delivery_flutter/project/util/splash_helper.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   final binding = WidgetsFlutterBinding.ensureInitialized();
   SplashScreenHelper.initSplash(binding: binding);
+  setupDependencies();
   runApp(const MyApp());
 }
 
@@ -40,7 +44,10 @@ class _MyAppState extends State<MyApp> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => HomeViewViewModel(),
+          create: (context) => HomeViewViewModel(
+            getFeaturedUseCase: getIt<GetFeaturedUseCase>(),
+            getHotspotUseCase: getIt<GetHotspotUseCase>(),
+          ),
         ),
         ChangeNotifierProvider(
           create: (context) => FoodDetailViewModel(),
@@ -61,7 +68,7 @@ class _MyAppState extends State<MyApp> {
           create: (context) => SignupViewModel(profileViewModel: context.read<ProfileViewModel>()),
         ),
         ChangeNotifierProvider(
-          create: (context) => PaymentViewModel(),
+          create: (context) => PaymentViewModel(profileViewModel: context.read<ProfileViewModel>()),
         ),
       ],
       child: MaterialApp.router(

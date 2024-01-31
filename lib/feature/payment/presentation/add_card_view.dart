@@ -4,7 +4,6 @@ import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:food_delivery_flutter/feature/payment/application/payment_view_model.dart';
 import 'package:food_delivery_flutter/feature/payment/presentation/add_card_view_mixin.dart';
 import 'package:food_delivery_flutter/project/constant/string_constant.dart';
-import 'package:food_delivery_flutter/project/extension/string_extension.dart';
 import 'package:food_delivery_flutter/project/util/credit_card_formatter.dart';
 import 'package:food_delivery_flutter/project/util/size_helper.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_button.dart';
@@ -83,49 +82,58 @@ class _AddCardViewState extends State<AddCardView> with AddCardViewMixin {
                   child: Column(
                     children: [
                       _CardTextFormField(
-                        title: 'Card Holder Name',
-                        hintText: 'Name',
+                        title: StringConstant.cardHolderNameTitle,
+                        hintText: StringConstant.cardHolderNameHint,
+                        onChanged: updateCardHolderName,
                         validator: (p0) {
                           if (p0 == null || p0.isEmpty) {
-                            return 'Please fill card holder name';
+                            return StringConstant.cardHolderNameErrorText;
                           }
                           return null;
                         },
                       ),
                       _CardTextFormField(
-                        title: 'Card Number',
-                        hintText: 'XXXX XXXX XXXX XXXX',
-                        validator: (p0) => p0?.isCreditCardNumberValid(),
+                        title: StringConstant.cardNumberTitle,
+                        hintText: StringConstant.cardNumberHint,
+                        //validator: (p0) => p0?.isCreditCardNumberValid(),
+                        //? Uncomment when you want to use card number validity.
+                        onChanged: updateCardNumber,
                         inputFormatters: [
                           FilteringTextInputFormatter.digitsOnly,
                           CreditCardNumberFormatter(),
                         ],
                       ),
                       _CardTextFormField(
-                        title: 'Exp. Date',
-                        hintText: 'MM/YY',
+                        title: StringConstant.expDateTitle,
+                        hintText: StringConstant.expDateHint,
+                        onChanged: updateExpiryDate,
                         inputFormatters: [
                           CreditCardExpirationFormatter(),
                         ],
                       ),
                       _CardTextFormField(
-                        title: 'CVV',
-                        hintText: '123',
+                        title: StringConstant.cvvTitle,
+                        hintText: StringConstant.cvvHint,
                         focusNode: cvvFocus,
+                        onChanged: updateCvvCode,
                         inputFormatters: [
                           FilteringTextInputFormatter.digitsOnly,
                         ],
                       ),
                       FoodDeliveryButton(
-                        text: 'Save Card',
+                        text: StringConstant.saveCard,
                         onPressed: () {
                           if (formKey.currentState?.validate() == true) {
-                            context.read<PaymentViewModel>().saveCreditCard(
+                            final isSuccess = context.read<PaymentViewModel>().saveCreditCard(
                                   cardHolderName: cardHolderName,
                                   cardNumber: cardNumber,
                                   expDate: expiryDate,
                                   cvv: cvvCode,
                                 );
+
+                            if (isSuccess) {
+                              context.pop();
+                            }
                           }
                         },
                       ),
@@ -148,6 +156,7 @@ class _CardTextFormField extends StatelessWidget {
     this.inputFormatters,
     this.focusNode,
     this.validator,
+    required this.onChanged,
   });
 
   final String title;
@@ -155,6 +164,7 @@ class _CardTextFormField extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final FocusNode? focusNode;
   final String? Function(String?)? validator;
+  final void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -170,6 +180,7 @@ class _CardTextFormField extends StatelessWidget {
           inputFormatters: inputFormatters,
           focusNode: focusNode,
           validator: validator,
+          onChanged: onChanged,
         ),
         SizedBox(
           height: SizeHelper.toHeight(24),

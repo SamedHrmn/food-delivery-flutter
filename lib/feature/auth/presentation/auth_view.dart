@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter/project/constant/string_constant.dart';
 import 'package:food_delivery_flutter/project/navigation/app_navigation.dart';
-import 'package:food_delivery_flutter/project/widget/food_delivery_asset_image.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_image.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_button.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_text.dart';
 import 'package:gen/gen.dart';
@@ -19,8 +19,8 @@ class AuthView extends StatelessWidget {
           children: [
             const SizedBox(height: 42),
             Expanded(
-              child: FoodDeliveryAssetImage(
-                assetPath: Assets.images.imRegister.path,
+              child: FoodDeliveryImage(
+                pathOrUrl: Assets.images.imRegister.path,
               ),
             ),
             const TextFoodDelivery(text: StringConstant.authHeader, size: 24),

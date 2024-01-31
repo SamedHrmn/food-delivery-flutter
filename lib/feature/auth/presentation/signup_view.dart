@@ -4,7 +4,7 @@ import 'package:food_delivery_flutter/project/constant/string_constant.dart';
 import 'package:food_delivery_flutter/project/extension/string_extension.dart';
 import 'package:food_delivery_flutter/project/navigation/app_navigation.dart';
 import 'package:food_delivery_flutter/project/util/size_helper.dart';
-import 'package:food_delivery_flutter/project/widget/food_delivery_asset_image.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_image.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_button.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_text.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_text_field.dart';
@@ -168,8 +168,8 @@ class _SignupViewState extends State<SignupView> {
   Padding topImage() {
     return Padding(
       padding: EdgeInsets.only(top: SizeHelper.toHeight(62), bottom: SizeHelper.toHeight(47)),
-      child: FoodDeliveryAssetImage(
-        assetPath: Assets.images.imSplashIcon.path,
+      child: FoodDeliveryImage(
+        pathOrUrl: Assets.images.imSplashIcon.path,
         width: 149,
         height: 110,
       ),

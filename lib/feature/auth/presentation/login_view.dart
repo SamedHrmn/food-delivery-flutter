@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter/project/constant/string_constant.dart';
 import 'package:food_delivery_flutter/project/navigation/app_navigation.dart';
-import 'package:food_delivery_flutter/project/widget/food_delivery_asset_image.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_image.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_button.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_text.dart';
 import 'package:gen/gen.dart';
@@ -72,9 +72,9 @@ class LoginView extends StatelessWidget {
     );
   }
 
-  FoodDeliveryAssetImage topImage() {
-    return FoodDeliveryAssetImage(
-      assetPath: Assets.images.imSplashIcon.path,
+  FoodDeliveryImage topImage() {
+    return FoodDeliveryImage(
+      pathOrUrl: Assets.images.imSplashIcon.path,
       width: 180,
       height: 140,
     );

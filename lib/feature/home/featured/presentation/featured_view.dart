@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_flutter/feature/shared/data/api_response.dart';
 import 'package:food_delivery_flutter/feature/shared/presentation/home_view_viewmodel.dart';
 import 'package:food_delivery_flutter/feature/home/widget/featured_item.dart';
 import 'package:food_delivery_flutter/project/constant/string_constant.dart';
@@ -47,19 +48,33 @@ class _FeaturedViewState extends State<FeaturedView> {
             ),
             Expanded(
               child: Consumer<HomeViewViewModel>(
-                builder: (context, homeViewModel, _) => ListView.separated(
-                    padding: SizeHelper.padding(l: 20, r: 20, t: 36),
-                    itemBuilder: (context, index) => SizedBox(
-                          height: SizeHelper.toHeight(260),
-                          child: FeaturedItem(
-                            onTap: () => context.push(AppNavigation.foodDetailViewPath, extra: homeViewModel.featuredItems[index]),
-                            featuredModel: homeViewModel.featuredItems[index],
-                          ),
-                        ),
-                    separatorBuilder: (context, index) => SizedBox(
-                          height: SizeHelper.toHeight(36),
-                        ),
-                    itemCount: homeViewModel.featuredItems.length),
+                builder: (context, homeViewModel, _) {
+                  switch (homeViewModel.featuredItemsResponse.status) {
+                    case ApiStatus.LOADING:
+                      return const CircularProgressIndicator.adaptive();
+                    case ApiStatus.ERROR:
+                      return const TextFoodDelivery(text: StringConstant.errorMsg, size: 16);
+                    case ApiStatus.COMPLETED:
+                      final featuredItems = homeViewModel.featuredItemsResponse.data!;
+
+                      return ListView.separated(
+                          padding: SizeHelper.padding(l: 20, r: 20, t: 36),
+                          itemBuilder: (context, index) => SizedBox(
+                                height: SizeHelper.toHeight(260),
+                                child: FeaturedItem(
+                                  onTap: () => context.push(AppNavigation.foodDetailViewPath, extra: featuredItems[index]),
+                                  featuredModel: featuredItems[index],
+                                ),
+                              ),
+                          separatorBuilder: (context, index) => SizedBox(
+                                height: SizeHelper.toHeight(36),
+                              ),
+                          itemCount: featuredItems.length);
+
+                    default:
+                      return const SizedBox();
+                  }
+                },
               ),
             ),
           ],

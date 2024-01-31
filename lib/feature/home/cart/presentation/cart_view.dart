@@ -3,7 +3,7 @@ import 'package:food_delivery_flutter/feature/home/cart/application/cart_viewmod
 import 'package:food_delivery_flutter/feature/shared/domain/food_model.dart';
 import 'package:food_delivery_flutter/project/constant/string_constant.dart';
 import 'package:food_delivery_flutter/project/util/size_helper.dart';
-import 'package:food_delivery_flutter/project/widget/food_delivery_asset_image.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_image.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_button.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_icon_button.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_text.dart';
@@ -112,8 +112,8 @@ class CartView extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         TextFoodDelivery(text: foodModel.name ?? '-', size: 26),
-        FoodDeliveryAssetImage(
-          assetPath: foodModel.imagePath ?? '-',
+        FoodDeliveryImage(
+          pathOrUrl: foodModel.imagePath ?? '-',
           width: 70,
         ),
       ],

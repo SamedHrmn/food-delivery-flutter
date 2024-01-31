@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter/project/enum/navbar_pages.dart';
 import 'package:food_delivery_flutter/project/util/size_helper.dart';
-import 'package:food_delivery_flutter/project/widget/food_delivery_asset_image.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_image.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_navbar_item.dart';
 import 'package:gen/gen.dart';
 
@@ -43,8 +43,8 @@ class FoodDeliveryBottomNavBar extends StatelessWidget {
                   customBorder: const CircleBorder(),
                   child: Padding(
                     padding: const EdgeInsets.all(16),
-                    child: FoodDeliveryAssetImage(
-                      assetPath: Assets.images.icBag.path,
+                    child: FoodDeliveryImage(
+                      pathOrUrl: Assets.images.icBag.path,
                     ),
                   ),
                 ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter/project/util/size_helper.dart';
-import 'package:food_delivery_flutter/project/widget/food_delivery_asset_image.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_image.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_text.dart';
 import 'package:gen/gen.dart';
 
@@ -81,8 +81,8 @@ class FoodDeliveryButton extends StatelessWidget {
                   Flexible(
                     child: Padding(
                       padding: EdgeInsets.only(right: SizeHelper.toWidth(24), left: SizeHelper.toWidth(66)),
-                      child: FoodDeliveryAssetImage(
-                        assetPath: iconPath!,
+                      child: FoodDeliveryImage(
+                        pathOrUrl: iconPath!,
                         width: 24,
                         height: 24,
                       ),

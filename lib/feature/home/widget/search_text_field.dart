@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_flutter/project/constant/string_constant.dart';
 import 'package:food_delivery_flutter/project/util/size_helper.dart';
-import 'package:food_delivery_flutter/project/widget/food_delivery_asset_image.dart';
+import 'package:food_delivery_flutter/project/widget/food_delivery_image.dart';
 import 'package:food_delivery_flutter/project/widget/food_delivery_text_field.dart';
 import 'package:gen/gen.dart';
 
@@ -28,8 +28,8 @@ class SearchTextField extends StatelessWidget {
             t: 10,
             b: 10,
           ),
-          child: FoodDeliveryAssetImage(
-            assetPath: Assets.images.icSearch.path,
+          child: FoodDeliveryImage(
+            pathOrUrl: Assets.images.icSearch.path,
             width: 24,
           ),
         ),

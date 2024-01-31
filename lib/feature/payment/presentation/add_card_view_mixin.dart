@@ -11,6 +11,30 @@ mixin AddCardViewMixin on State<AddCardView> {
   final cvvFocus = FocusNode();
   final formKey = GlobalKey<FormState>();
 
+  void updateCardNumber(String n) {
+    setState(() {
+      cardNumber = n;
+    });
+  }
+
+  void updateExpiryDate(String d) {
+    setState(() {
+      expiryDate = d;
+    });
+  }
+
+  void updateCardHolderName(String name) {
+    setState(() {
+      cardHolderName = name;
+    });
+  }
+
+  void updateCvvCode(String cvv) {
+    setState(() {
+      cvvCode = cvv;
+    });
+  }
+
   @override
   void initState() {
     super.initState();

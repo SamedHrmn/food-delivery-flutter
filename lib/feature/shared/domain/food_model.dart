@@ -22,6 +22,8 @@ class FoodModel {
     this.extras = const [],
   });
 
+  factory FoodModel.empty() => FoodModel(name: null, price: null, cal: null, rating: null, duration: null, imagePath: null);
+
   FoodModel copyWith({
     String? name,
     String? specialText,
@@ -45,5 +47,38 @@ class FoodModel {
       imagePath: imagePath ?? this.imagePath,
       extras: extras ?? this.extras,
     );
+  }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': name,
+      'specialText': specialText,
+      'deliveryFee': deliveryFee,
+      'cal': cal,
+      'price': price,
+      'rating': rating,
+      'duration': duration,
+      'imagePath': imagePath,
+      'extras': extras,
+    };
+  }
+
+  factory FoodModel.fromMap(Map<String, dynamic> map) {
+    return FoodModel(
+      name: map['name'] != null ? map['name'] as String : null,
+      specialText: map['specialText'] != null ? map['specialText'] as String : null,
+      deliveryFee: map['deliveryFee'] != null ? (map['deliveryFee'] as num?)?.toDouble() : null,
+      cal: map['cal'] != null ? (map['cal'] as num?)?.toDouble() : null,
+      price: map['price'] != null ? (map['price'] as num?)?.toDouble() : null,
+      rating: map['rating'] != null ? (map['rating'] as num?)?.toDouble() as double : null,
+      duration: map['duration'] != null ? map['duration'] as String : null,
+      imagePath: map['imagePath'] != null ? map['imagePath'] as String : null,
+      extras: List<String>.from((map['extras'] ?? <dynamic>[])),
+    );
+  }
+
+  @override
+  String toString() {
+    return toMap().toString();
   }
 }

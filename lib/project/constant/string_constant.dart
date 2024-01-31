@@ -47,4 +47,20 @@ final class StringConstant {
   static const emailValidError = 'Enter a valid email address';
   static const yourCards = 'Your Cards';
   static const addCard = 'Add Card';
+
+  static const errorMsg = 'An error occured.';
+
+  static const cardHolderNameTitle = 'Card Holder Name';
+  static const cardHolderNameHint = 'Name';
+  static const cardHolderNameErrorText = 'Please fill card holder name.';
+
+  static const cardNumberTitle = 'Card Number';
+  static const cardNumberHint = 'XXXX XXXX XXXX XXXX';
+
+  static const expDateTitle = 'Exp. Date';
+  static const expDateHint = 'MM/YY';
+
+  static const cvvTitle = 'CVV';
+  static const cvvHint = '123';
+  static const saveCard = 'Save Card';
 }

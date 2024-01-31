@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class BaseImage extends StatelessWidget {
-  const BaseImage({
+class BaseNetworkImage extends StatelessWidget {
+  const BaseNetworkImage({
     super.key,
     required this.name,
     this.width,
@@ -20,9 +20,8 @@ class BaseImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
+    return Image.network(
       name,
-      package: 'gen',
       width: width,
       height: height,
       fit: fit,
