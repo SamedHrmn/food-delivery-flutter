@@ -3,9 +3,9 @@
 In this project I developed for my portfolio, I used Clean Architecture and NodeJS Backend.
 
 ## Features
-🎯 Onboarding, authentication (local only)
-🎯 Hotspot and Featured foods (I developed a REST API for it.)
-🎯 Add favourite food (local only)
+🎯 Onboarding, authentication (local only)   
+🎯 Hotspot and Featured foods (I developed a REST API for it.)    
+🎯 Add favourite food (local only)    
 🎯 Add credit card (local only)  
 🎯 Search hotspot foods 
 
